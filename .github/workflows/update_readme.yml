@@ -1,22 +1,67 @@
-name: Update README2
+name: Update README Activity
 
 on:
   schedule:
-    - cron: "* */12 * * *"
+    - cron: "0 */12 * * *"
   workflow_dispatch:
-  
+
 permissions:
   contents: write
-  
+
 jobs:
-  build:
+  update-readme:
     runs-on: ubuntu-latest
-    name: Update Profile README
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-      - uses: Readme-Workflows/recent-activity@v2.4.1
+      - name: Update README with recent activity
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
 
-        env:
-         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            const username = context.repo.owner;
+
+            // Obtener eventos recientes
+            const events = await github.rest.activity.listPublicEventsForUser({
+              username,
+              per_page: 5
+            });
+
+            let activity = "### ⚡ Actividad reciente\n";
+
+            for (const event of events.data) {
+              const repo = event.repo.name;
+              const type = event.type;
+
+              let line = `- ${type} en ${repo}`;
+
+              if (event.type === "PushEvent") {
+                const commits = event.payload.commits
+                  .slice(0, 1)
+                  .map(c => c.message)
+                  .join(", ");
+                line += ` → "${commits}"`;
+              }
+
+              activity += line + "\n";
+            }
+
+            const readme = fs.readFileSync("README.md", "utf8");
+
+            const newReadme = readme.replace(
+              /<!--RECENT_ACTIVITY:start-->[\s\S]*<!--RECENT_ACTIVITY:end-->/,
+              `<!--RECENT_ACTIVITY:start-->\n${activity}<!--RECENT_ACTIVITY:end-->`
+            );
+
+            fs.writeFileSync("README.md", newReadme);
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add README.md
+          git commit -m "Update recent activity" || echo "No changes"
+          git push
