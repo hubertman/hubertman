@@ -20,4 +20,4 @@
 
 ### :zap: Actividad reciente
 <!--RECENT_ACTIVITY:start-->
-<!--END_SECTION:last_update -->
+<!--RECENT_ACTIVITY:end-->
