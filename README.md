@@ -20,5 +20,12 @@
 
 ### ⚡ Actividad reciente
 <!--RECENT_ACTIVITY:start-->
-Cargando actividad...
+### ⚡ Actividad reciente
+
+- ⬆️ Push en hubertman/hubertman
+- ⬆️ Push en hubertman/hubertman
+- ⬆️ Push en hubertman/hubertman
+- ⬆️ Push en hubertman/hubertman
+- ⬆️ Push en hubertman/hubertman
+
 <!--RECENT_ACTIVITY:end-->
