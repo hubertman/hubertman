@@ -18,11 +18,7 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://pe.linkedin.com/in/hubert-daniel-guerrero-rafael-445442194)
 [![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](TU_TWITTER)
 
-### :zap: Actividad reciente
+### ⚡ Actividad reciente
 <!--RECENT_ACTIVITY:start-->
-1. ⬆️ Pushed undefined commit(s) to [hubertman/hubertman](https://github.com/hubertman/hubertman)<br>
-2. ⬆️ Pushed undefined commit(s) to [hubertman/hubertman](https://github.com/hubertman/hubertman)<br>
-3. ⬆️ Pushed undefined commit(s) to [hubertman/hubertman](https://github.com/hubertman/hubertman)<br>
-4. ⬆️ Pushed undefined commit(s) to [hubertman/hubertman](https://github.com/hubertman/hubertman)<br>
-5. ⬆️ Pushed undefined commit(s) to [hubertman/hubertman](https://github.com/hubertman/hubertman)<br>
+Cargando actividad...
 <!--RECENT_ACTIVITY:end-->
