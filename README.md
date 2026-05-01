@@ -18,7 +18,7 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://pe.linkedin.com/in/hubert-daniel-guerrero-rafael-445442194)
 [![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](TU_TWITTER)
 
-### ⚡ Actividad reciente
+
 <!--RECENT_ACTIVITY:start-->
 ### ⚡ Actividad reciente
 
