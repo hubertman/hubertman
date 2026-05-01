@@ -17,3 +17,8 @@
 [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](TU_INSTAGRAM)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://pe.linkedin.com/in/hubert-daniel-guerrero-rafael-445442194)
 [![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](TU_TWITTER)
+
+### :zap: Actividad reciente
+<!--START_SECTION:activity -->
+
+<!--END_SECTION:activity -->
