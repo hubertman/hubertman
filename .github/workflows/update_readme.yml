@@ -8,13 +8,18 @@ on:
 permissions:
   contents: write
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   update-readme:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Update README with recent activity
         uses: actions/github-script@v7
@@ -26,49 +31,59 @@ jobs:
 
             const events = await github.rest.activity.listPublicEventsForUser({
               username,
-              per_page: 5
+              per_page: 10
             });
 
             let activity = "### ⚡ Actividad reciente\n\n";
 
             for (const event of events.data) {
-              const repo = event.repo?.name || "repo desconocido";
-              const type = event.type;
+              const repo = event.repo?.name;
+              if (!repo) continue;
+
+              const repoUrl = `https://github.com/${repo}`;
+              const date = new Date(event.created_at).toLocaleDateString("es-PE");
 
               let line = "";
 
-              if (type === "PushEvent") {
-                let commitMsg = "";
-
-                if (
-                  event.payload &&
-                  Array.isArray(event.payload.commits) &&
-                  event.payload.commits.length > 0
-                ) {
-                  commitMsg = ` → "${event.payload.commits[0].message}"`;
-                }
-
-                line = `- ⬆️ Push en ${repo}${commitMsg}`;
-              } else {
-                line = `- 📌 ${type} en ${repo}`;
+              if (event.type === "PushEvent") {
+                const branch = event.payload?.ref?.replace("refs/heads/", "") || "main";
+                line = `- 🚀 Push en [${repo}](${repoUrl}) → ${branch} (${date})`;
+              } 
+              else if (event.type === "PullRequestEvent") {
+                line = `- 🔀 Pull Request en [${repo}](${repoUrl}) (${date})`;
+              } 
+              else if (event.type === "IssuesEvent") {
+                line = `- 🐛 Issue en [${repo}](${repoUrl}) (${date})`;
+              } 
+              else if (event.type === "WatchEvent") {
+                line = `- ⭐ Star en [${repo}](${repoUrl}) (${date})`;
+              } 
+              else {
+                continue; // filtra eventos irrelevantes
               }
 
               activity += line + "\n";
             }
 
-            const readme = fs.readFileSync("README.md", "utf8");
+            const readmePath = "README.md";
+
+            if (!fs.existsSync(readmePath)) {
+              throw new Error("README.md no encontrado");
+            }
+
+            const readme = fs.readFileSync(readmePath, "utf8");
 
             const newReadme = readme.replace(
               /<!--RECENT_ACTIVITY:start-->[\s\S]*<!--RECENT_ACTIVITY:end-->/,
               `<!--RECENT_ACTIVITY:start-->\n${activity}\n<!--RECENT_ACTIVITY:end-->`
             );
 
-            fs.writeFileSync("README.md", newReadme);
+            fs.writeFileSync(readmePath, newReadme);
 
-      - name: Commit changes
+      - name: Commit and push changes
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add README.md
-          git commit -m "Update recent activity" || echo "No changes"
+          git commit -m "⚡ Update recent activity" || echo "No changes to commit"
           git push
