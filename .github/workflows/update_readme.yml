@@ -24,26 +24,33 @@ jobs:
 
             const username = context.repo.owner;
 
-            // Obtener eventos recientes
             const events = await github.rest.activity.listPublicEventsForUser({
               username,
               per_page: 5
             });
 
-            let activity = "### ⚡ Actividad reciente\n";
+            let activity = "### ⚡ Actividad reciente\n\n";
 
             for (const event of events.data) {
-              const repo = event.repo.name;
+              const repo = event.repo?.name || "repo desconocido";
               const type = event.type;
 
-              let line = `- ${type} en ${repo}`;
+              let line = "";
 
-              if (event.type === "PushEvent") {
-                const commits = event.payload.commits
-                  .slice(0, 1)
-                  .map(c => c.message)
-                  .join(", ");
-                line += ` → "${commits}"`;
+              if (type === "PushEvent") {
+                let commitMsg = "";
+
+                if (
+                  event.payload &&
+                  Array.isArray(event.payload.commits) &&
+                  event.payload.commits.length > 0
+                ) {
+                  commitMsg = ` → "${event.payload.commits[0].message}"`;
+                }
+
+                line = `- ⬆️ Push en ${repo}${commitMsg}`;
+              } else {
+                line = `- 📌 ${type} en ${repo}`;
               }
 
               activity += line + "\n";
@@ -53,7 +60,7 @@ jobs:
 
             const newReadme = readme.replace(
               /<!--RECENT_ACTIVITY:start-->[\s\S]*<!--RECENT_ACTIVITY:end-->/,
-              `<!--RECENT_ACTIVITY:start-->\n${activity}<!--RECENT_ACTIVITY:end-->`
+              `<!--RECENT_ACTIVITY:start-->\n${activity}\n<!--RECENT_ACTIVITY:end-->`
             );
 
             fs.writeFileSync("README.md", newReadme);
