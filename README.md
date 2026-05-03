@@ -22,15 +22,11 @@
 <!--RECENT_ACTIVITY:start-->
 ### ⚡ Actividad reciente
 
-- 🚀 Push en [hubertman/hubertman](https://github.com/hubertman/hubertman) → main (1/5/2026)
-- 🚀 Push en [hubertman/hubertman](https://github.com/hubertman/hubertman) → main (1/5/2026)
-- 🚀 Push en [hubertman/hubertman](https://github.com/hubertman/hubertman) → main (1/5/2026)
-- 🚀 Push en [hubertman/hubertman](https://github.com/hubertman/hubertman) → main (1/5/2026)
-- 🚀 Push en [hubertman/hubertman](https://github.com/hubertman/hubertman) → main (1/5/2026)
-- 🚀 Push en [hubertman/hubertman](https://github.com/hubertman/hubertman) → main (1/5/2026)
-- 🚀 Push en [hubertman/hubertman](https://github.com/hubertman/hubertman) → main (1/5/2026)
-- 🚀 Push en [hubertman/hubertman](https://github.com/hubertman/hubertman) → main (1/5/2026)
-- 🚀 Push en [hubertman/hubertman](https://github.com/hubertman/hubertman) → main (1/5/2026)
-- 🚀 Push en [hubertman/hubertman](https://github.com/hubertman/hubertman) → main (1/5/2026)
+- 🚀 Push en [hubertman/Repogit](https://github.com/hubertman/Repogit) → main (3/5/2026)
+- 🚀 Push en [hubertman/RepoReleasse](https://github.com/hubertman/RepoReleasse) → main (3/5/2026)
+- 🚀 Push en [hubertman/Repocli2](https://github.com/hubertman/Repocli2) → main (3/5/2026)
+- 🔀 Pull Request en [hubertman/Repocli2](https://github.com/hubertman/Repocli2) (3/5/2026)
+- 🔀 Pull Request en [hubertman/Repocli2](https://github.com/hubertman/Repocli2) (3/5/2026)
+- 🚀 Push en [hubertman/Repocli2](https://github.com/hubertman/Repocli2) → main (2/5/2026)
 
 <!--RECENT_ACTIVITY:end-->
